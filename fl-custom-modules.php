@@ -25,6 +25,7 @@ class FLCustomModules {
 	function custom_load_modules(){
 		include_once 'modules/button/button.php';
 		include_once 'modules/heading/heading.php';
+		include_once 'modules/slider/slider.php';
 	}
 
 	function load_plugin_textdomain() {

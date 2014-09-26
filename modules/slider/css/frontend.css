@@ -1,0 +1,52 @@
+#fl-slider-list{
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+#fl-slider-list:before, #fl-slider-list:after, #fl-slider-list .fl-slider:before, #fl-slider-list .fl-slider:after {
+	content: '';
+	display: table;
+	clear: both;
+}
+#fl-slider-list .fl-slider{
+	width: 100%;
+	padding: 1em;
+	margin: .5em;
+	border: 1px solid #eee;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
+	background-color: #fff;
+}
+
+#fl-slider-list .fl-slider-img{
+	display: block;
+	width: 100%;
+	height: auto;
+	border: none;
+	cursor: pointer;
+}
+
+#fl-slider-list .fl-slider .img{
+	float: left;
+	width: 20%;
+}
+#fl-slider-list .fl-slider .caption{
+	position: relative;
+	float: left;
+	width: 77%;
+	margin-left: 3%;
+}
+#fl-slider-list .fl-slider input[type="text"]{
+	width: 100%;
+	font-size: 1.2em;
+	padding: .5em;
+}
+#fl-slider-list .remove{
+	position: absolute;
+	top: 0;
+	right: 0;
+	border: none;
+	background-color: transparent;
+}
