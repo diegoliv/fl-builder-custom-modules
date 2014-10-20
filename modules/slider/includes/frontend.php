@@ -1,40 +1,29 @@
 <?php 
 
-	wp_enqueue_script( 'fl-swiper' );
+	$slides = $settings->slides;
 
-	$slides = array();
+	if( $slides ): ?>
 
-	// build the slides array
-	foreach ( $settings->slides as $key => $id ){
-		$slides[$key] = array(
-			'id'		=> $id,
-			'legenda'	=> $settings->captions[ $key ],
-		);
-	}
+	<div class="swiper-container fl-slider">
+		<a href="#" class="swiper-arrow-left"><span class="icon-seta-esquerda-slim"></span><span class="label"></span></a>
+		<a href="#" class="swiper-arrow-right"><span class="icon-seta-direita-slim"></span><span class="label"></span></a>
 
-	$autoplay = $settings->autoplay ? $settings->autoplay_value : 'null';
-	$data = 'data-mode="' . $settings->mode . '" data-loop="' . $settings->loop . '" data-autoplay="' . $autoplay . '"';
+		<div class="swiper-wrapper">
 
- ?>
+		<?php foreach( $slides as $slide ): ?>
 
-<div class="swiper-container fl-slider" <?php echo $data ?>>
-	<a href="#" class="swiper-arrow-left"><span class="icon-seta-esquerda-slim"></span><span class="label"></span></a>
-	<a href="#" class="swiper-arrow-right"><span class="icon-seta-direita-slim"></span><span class="label"></span></a>
+	        <?php $img = FLBuilderPhoto::get_attachment_data( $slide ); ?>
 
-	<div class="swiper-wrapper">
+ 			<div class="swiper-slide">
+				<img src="<?php echo $img->sizes->{'slideshow-full'}->url; ?>">
+				<?php //if( $slide->description ): ?>
+			    	<p class="slide-caption"><?php echo $slide->description ?></p>
+			    <?php //endif; ?>
+			</div>
 
-	<?php foreach( $slides as $slide ): ?>
+		<?php endforeach; ?>
 
-        <?php $img = wp_get_attachment_image_src( $slide['id'], 'slideshow-full' ); ?>
-
-		<div class="swiper-slide">
-			<img src="<?php echo $img[0]; ?>">
-			<?php if( $slide['legenda'] ): ?>
-		    	<p class="slide-caption"><?php echo $slide['legenda'] ?></p>
-		    <?php endif; ?>
 		</div>
-
-	<?php endforeach; ?>
-
 	</div>
-</div>
+
+<?php endif; ?>

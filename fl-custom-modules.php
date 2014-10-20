@@ -3,14 +3,17 @@
  * Plugin Name: Page Builder - Custom Modules
  * Plugin URI: http://themes.fastlinemedia.com/wordpress-page-builder-plugin/
  * Description: Custom Modules for the FastLine Page Builder.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Favolla Comunicação
  * Author URI: http://favolla.com.br
  * Copyright: (c) 2014 Favolla Comunicação
  * Text Domain: fl-custom-modules
  */
 
-if( !class_exists( 'FLBuilderModule' ) )
+define( 'FL_CUSTOM_MODULES_DIR', plugin_dir_path( __FILE__ ) );
+define( 'FL_CUSTOM_MODULES_URL', plugins_url( '/', __FILE__ ) );
+
+if( !class_exists( 'FLBuilder' ) )
 	return;
 
 class FLCustomModules {

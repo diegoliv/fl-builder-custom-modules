@@ -16,15 +16,12 @@ class FL_Slider extends FLBuilderModule {
 			'name'          => __( 'Slider', $modules->plugin_slug ),
 			'description'   => __( 'Display an image slider.', $modules->plugin_slug ),
 			'category'		=> __( 'Basic Modules', $modules->plugin_slug ),
-			'dir'           => plugin_dir_path( __FILE__ ),
-			'url'           => plugin_dir_url( __FILE__ ),
+			'dir'           => FL_CUSTOM_MODULES_DIR .'slider/',
+			'url'           => FL_CUSTOM_MODULES_URL .'slider/',
 		));
 
-        wp_register_script( 'fl-swiper', plugin_dir_url( __FILE__ ) . 'js/idangerous.swiper.min.js', array( 'jquery' ), array(), true );                
-
-		wp_register_style( 'bb-slider-css', plugin_dir_url( __FILE__ ) . 'css/frontend.css', array(), null );
-		wp_enqueue_style( 'bb-slider-css' );
-
+		// Register and enqueue your own.
+        $this->add_js( 'fl-swiper', plugin_dir_url( __FILE__ ) . 'js/idangerous.swiper.min.js', array( 'jquery' ), '', true );                
 	}
 
 }
@@ -36,8 +33,17 @@ FLBuilder::register_module('FL_Slider', array(
 	'general'       => array(
 		'title'         => __( 'General', $modules->plugin_slug ),
 		'sections'      => array(
+			'slideshow'	=> array(
+				'title'		=> __( 'Slides', $modules->plugin_slug ),
+				'fields'	=> array(
+					'slides' => array(
+						'type'      => 'multiple-photos',
+						'label'     => __( 'Select Images', $modules->plugin_slug ),
+					),
+				)
+			),
 			'settings'	=> array(
-				'title'		=> '',
+				'title'		=> __( 'Settings', $modules->plugin_slug ),
 				'fields'	=> array(
 					'mode' => array(
 						'type'      => 'select',
@@ -79,8 +85,4 @@ FLBuilder::register_module('FL_Slider', array(
 			),
 		)
 	),
-	'slides'		=> array(
-        'title'         => __('Slides', $modules->plugin_slug ), // Tab title
-        'file'          => plugin_dir_path( __FILE__ ). '/includes/settings-slider.php'
-    )
 ));

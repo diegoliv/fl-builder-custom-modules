@@ -16,8 +16,8 @@ class FL_Button extends FLBuilderModule {
 			'name'          => __( 'Button', $modules->plugin_slug ),
 			'description'   => __( 'Display a link button.', $modules->plugin_slug ),
 			'category'		=> __( 'Basic Modules', $modules->plugin_slug ),
-			'dir'           => plugin_dir_path( __FILE__ ),
-			'url'           => plugin_dir_path( __FILE__ ),
+			'dir'           => FL_CUSTOM_MODULES_DIR .'button/',
+			'url'           => FL_CUSTOM_MODULES_URL .'button/',
 		));
 
 	}
